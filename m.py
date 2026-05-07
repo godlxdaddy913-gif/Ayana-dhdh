@@ -316,16 +316,20 @@ def handle_attack(message):
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
             if time > 1000:
-                response = "Error: Time interval must be less than 1000."
-            else:
-                record_command_logs(user_id, '/attack', target, port, time)
-                log_command(user_id, target, port, time)
-                start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"echo Attack command received: {target} {port} {time}"
-                # subprocess.run(full_command, shell=True)
-                response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
-        else:
-            response = "✅ Usage :- /attack <target> <port> <time>"  # Updated command syntax
+                response = "Error: Time interval must be less than 1000." 
+ else:
+    record_command_logs(user_id,  '/ 
+attack', target, port, time)
+
+    try:
+        log_command(user_id, target, port, time)
+    except Exception as e:
+        print(f"Log error: {e}")
+
+    start_attack_reply(message, target, port, time)
+    
+
+    
     else:
         response = ("🚫 Unauthorized Access! 🚫\n\nOops! It seems like you don't have permission to use the /attack command.                                                                          DM TO BUY ACCESS:- @kingthenos_bhai")
 
