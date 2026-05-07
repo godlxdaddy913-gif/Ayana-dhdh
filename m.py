@@ -318,15 +318,14 @@ def handle_attack(message):
             if time > 1000:
                 response = "Error: Time interval must be less than 1000." 
  else:
-    record_command_logs(user_id,  '/ 
-attack', target, port, time)
-
-    try:
-        log_command(user_id, target, port, time)
+    record_command_logs(user_id, '/attack', 
+    target, port, time)
+        try:
+            log_command(user_id, target, port, time)
     except Exception as e:
-        print(f"Log error: {e}")
+                print(f"Log error: {e}")
 
-    start_attack_reply(message, target, port, time)
+        start_attack_reply(message, target, port, time)
     
 
     
