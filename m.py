@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import telebot
 import subprocess
 import requests
